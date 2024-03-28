@@ -13,6 +13,7 @@
 ;
 
 
+
 ;development comments
 ;
 ;1-different ways to find other agents within a vision range:
@@ -32,7 +33,7 @@
 ;2-finding a patch in the neighborhood to move to that does not contain agents of a certain breed
 ;use patches by letting each patch define its neighborhood
 ;-requires own patch-variable 'neighborhood'
-patches-own [
+;patches-own [
 ;  neighborhood        ; surrounding patches within the vision radius
 ;]
 ; -requires to ask the patches to set their variable neighborhood to the patches within their in-radius vision
