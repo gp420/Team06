@@ -13,6 +13,8 @@
 ;
 omar
 
+asdfghj
+
 ;development comments
 ;
 ;1-different ways to find other agents within a vision range:
