@@ -12,7 +12,6 @@
 ;
 ;
 
-asdfghjk
 
 ;development comments
 ;
