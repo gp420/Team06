@@ -10,6 +10,7 @@
 ;---------------------------------------------------
 
 to cop_behavior
+  
   ; check if citizen is nearby to arrest
   let suspect one-of citizens-here with [inPrison? = false] ; need to make sure the citizen is not in jail, otherwise can the cop be trapped besides
     ifelse suspect != nobody [
@@ -26,7 +27,34 @@ to cop_behavior
         print (word " cop-agent: " who " sees suspect: " suspect)
         face suspect  
     ]
-    forward cop-speed ; move forward towards suspect
   ]
+      ; checking if the cop is in restaurant
+ifelse inRestaurant? = true [
+    set cop-hunger cop-hunger + 2 ;counting the time in prison
+    if cop-hunger > 25 [; released from restaurant
+      ; move forward where there are no cops and is not prison and restaurant
+      let places neighborhood with [not any? cops-here and region != "prison" and region != "restaurant"]
+      if any? places [move-to one-of places]
+      set inRestaurant? false
+      set color blue
+      print (word "cop " who "has finished eating")
+    ]
+  ]
+   [
+    forward cop-speed ; move forward towards suspect
+    set cop-hunger cop-hunger - 1
+    if cop-hunger < 1 [
+        gotorestaurant
+    ]
+   ]
+  
 end
 
+; if hungry go to restaurant
+to gotorestaurant 
+  ; set flag
+  set inRestaurant? true
+  set color cyan
+  ; move to restaurant into an own chair/table (=own patch)
+  move-to one-of patches with [not any? turtles-here and region = "restaurant"]
+end

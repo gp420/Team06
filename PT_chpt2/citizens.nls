@@ -29,7 +29,7 @@ ifelse inPrison? = true [
     let nearby-police other cops in-radius citizen-vision
     if any? nearby-police [
       let police min-one-of nearby-police [distance myself]; identify the cop that is nearest
-      if police != nobody [
+      if police != nobody and distance police > 0 [ ; Problem when when a citizen tries to calculate the heading towards a cop that is on the same patch
         print (word " citizen: " who " sees cop: " police)
         set heading (towards police) + 180 ; face opposite from the nearest police
       ] 

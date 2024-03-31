@@ -149,8 +149,10 @@ to setup
     set size 1.5
     set color green
     setxy random-xcor random-ycor
-    ; make sure the agents are not placed in prison & restaurant already during setup:
-    move-to one-of patches with [not any? turtles-here and region != "prison" and region != "restaurant"]
+    ; make sure the agents are not placed in prison already during setup:
+    move-to one-of patches with [ not any? turtles-here and region != "prison"]
+    ; make sure the agents are not placed in restaurant already during setup:
+    move-to one-of patches with [ not any? turtles-here and region != "restaurant"]
     ; setting specific variables for citizen
     set inPrison? false
     set jailtime 0
@@ -166,7 +168,7 @@ to setup
     set color blue
     set cop-speed random 3 + 1 ; make sure it cannot be 0
     set cop-hunger random 25 + 5
-    move-to one-of patches with [not any? turtles-here and region != "prison" and region != "restaurant"]
+
   ]
 
 
