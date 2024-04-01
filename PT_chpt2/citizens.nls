@@ -35,7 +35,7 @@ ifelse inPrison? = true [
       ] 
     ]    
     ; move forward where there are no cops and is not prison
-    let places neighborhood with [not any? cops-here and region != "prison"]
+    let places neighborhood with [not any? cops-here and region != "prison" and region != "restaurant"]
     if any? places [move-to one-of places]
   ]
 end
