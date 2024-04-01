@@ -24,9 +24,13 @@ to cop_behavior
      set suspect one-of other citizens with [inPrison? = false] in-radius cop-vision
      if suspect != nobody [
         print (word " cop-agent: " who " sees suspect: " suspect)
-        face suspect  
+        face suspect 
+        forward cop-speed ; move forward towards suspect
     ]
-    forward cop-speed ; move forward towards suspect
+    else [
+      right random 360
+      forward cop-speed
+    ]
   ]
 end
 
