@@ -47,15 +47,18 @@ to cop_behavior
   ;########## Updating the Beliefs, e.g. the agent's information about its environment ##############
   ;
   ; suspects = citizens nearby?
-  let suspect one-of citizens-here with [inPrison? = false] ; need to make sure the citizen is not in jail, otherwise can the cop be trapped besides
+  let suspect one-of citizens-here with [inPrison? = false and (region = "SocialEvents" or proState = "WalkingAround" or proState = "MeetingFriends" or proState = "Go_out")] ; need to make sure the citizen is not in jail, otherwise can the cop be trapped besides
   let hunted one-of other citizens with [inPrison? = false] in-radius cop-vision
   
   ;---test purpose
   ;set destinationxy one-of patches with [region = "Restaurant"]
-  set order "rule-of-law"
-  ;set order "arrest-troublemakers"
 
-    
+  ifelse hunted != nobody [
+    set order "arrest-troublemakers"
+  ] [
+    set order "rule-of-law"
+  ]
+  
     
 
   ;################## REACTIVE BEHAVIOR ####################################
@@ -115,4 +118,3 @@ to catch [hunted]
   face hunted 
   forward cop-speed
 end
-
