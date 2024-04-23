@@ -1,6 +1,6 @@
 ; DIS-PT_chpt6
 ; template for the programming task with cops and citizen agents
-;
+;HEJJJJJJ
 ; HOW TO WORK WITH THIS FILE:
 ;
 ; 1. Bransch this file from Github for your group
@@ -817,7 +817,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.3.0
+NetLogo 6.4.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
